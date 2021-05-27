@@ -29,12 +29,14 @@ pipeline {
               post {
 			  always {
 			  junit '**/target/surefire-reports/TEST-*.xml'
+			  
 			  }                      
             }
 		}
 stage ('package') {
 steps { 
 sh "mvn -DskipTests package"
+archiveArtifacts 'target/*.jar'
 }
          
             }
