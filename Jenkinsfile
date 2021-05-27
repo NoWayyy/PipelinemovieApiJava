@@ -13,6 +13,9 @@ pipeline {
                 // Get some code from a GitHub repository
                 git url: 'https://github.com/matthcol/movieapijava2021.git',
                     branch: 'dev'
+					
+            }
+			stage('Test'){
 
                 // Run Maven on a Unix agent.
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
@@ -20,7 +23,7 @@ pipeline {
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
-
+			stage ('Package') {
             post {
                 // If Maven was able to run the tests, even if some of the test
                 // failed, record the test results and archive the jar file.
