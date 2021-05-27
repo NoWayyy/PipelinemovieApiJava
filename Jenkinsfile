@@ -36,3 +36,4 @@ sh "mvn -DskipTests package"
             }
         }
     }
+}
